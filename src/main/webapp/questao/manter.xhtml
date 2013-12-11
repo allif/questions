@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">  
+  
+    <h:head>
+        <title>Questão</title>
+    </h:head>  
+      
+    <h:body onload="pnl1.toggle();pnl2.toggle()">
+	    <h:form id="form">
+	        <p:panel widgetVar="pnl1" header="Adicionar Questão" toggleable="true">
+	         
+	                <h:outputLabel for="descricaoQuestao" value="Descricao: "/>
+	                <p:inputTextarea id="descricaoQuestao" rows="6" cols="50" value="#{manterQuestaoMB.questao.descricao}"/>
+	                
+	                <h:outputLabel for="descricaoAlternativa1" value="a) "/>
+                    <p:inputTextarea id="descricaoAlternativa1" rows="3" cols="50" value="#{manterQuestaoMB.alternativa1.descricao}"/>
+                    
+                    <h:outputLabel for="descricaoAlternativa2" value="b) "/>
+                    <p:inputTextarea id="descricaoAlternativa2" rows="3" cols="50" value="#{manterQuestaoMB.alternativa2.descricao}"/>
+                    
+                    <h:outputLabel for="descricaoAlternativa3" value="c) "/>
+                    <p:inputTextarea id="descricaoAlternativa3" rows="3" cols="50" value="#{manterQuestaoMB.alternativa3.descricao}"/>
+                    
+                    <h:outputLabel for="descricaoAlternativa4" value="d) "/>
+                    <p:inputTextarea id="descricaoAlternativa4" rows="3" cols="50" value="#{manterQuestaoMB.alternativa4.descricao}"/>
+	       
+	            
+	            <p:separator/>
+	            
+	            <p:commandButton id="btnInserir" value="Inserir" action="#{manterQuestaoMB.inserir}" ajax="false"/>
+	        </p:panel>
+	        
+	        <p:panel widgetVar="pnl2" header="Questões" toggleable="true">
+	            <p:dataTable id="table" var="questao" value="#{manterQuestaoMB.questoes}">
+		            <p:column headerText="Descrição">  
+				        <h:outputText value="#{questao.descricao}" />  
+				    </p:column>
+				    
+				    <p:column headerText="Ações" style="width:9%">
+				        <p:commandButton icon="ui-icon-trash" action="#{manterQuestaoMB.excluir(questao)}" ajax="false"/>
+	                    <p:commandButton icon="ui-icon-gear" oncomplete="PF('edicaoDlg').show()"/>
+				    </p:column>
+		        </p:dataTable>
+		    </p:panel>
+	        
+	        <p:dialog header="Edição" widgetVar="edicaoDlg" resizable="false">
+	        </p:dialog>
+	        	        
+	   </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,3 @@
+Projeto Banco de Questões
+
+Este projeto implementa um Sistema de Banco de Questões para a geração de questionários automáticos. 
